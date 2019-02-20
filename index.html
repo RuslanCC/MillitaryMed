@@ -35,6 +35,19 @@
         $("#add_p").click(function(){
             $("#second_p").show();
         });
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        var slider2 = document.getElementById("myRange2");
+        var output2 = document.getElementById("demo2");
+        output.innerHTML = slider.value; // Display the default slider value
+
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {
+          output.innerHTML = this.value;
+        }
+        slider2.oninput = function() {
+          output2.innerHTML = this.value;
+        }
     }
     </script>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
@@ -61,20 +74,23 @@
                             <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="age" checked="" id="formCheck-1"><label class="form-check-label" for="formCheck-1">17-55 лет</label></div>
                             <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="age" id="formCheck-1"><label class="form-check-label" for="formCheck-1">55+ лет</label></div>
                         </div>
-                        <h4>Пульс:</h4>
-                        <div style="padding-top: 0px;padding-bottom: 15px;">
+                        <h4>Пульс: <span id="demo">80</span> уд.м.</h4>
+                        <input type="range" name="Пульс" value="80" min="0" class="custom-range" max="200" id="myRange" />
+                        <h4>Давление: <span id="demo2">120</span> мм.рт.сб</h4>
+                        <input type="range" name="Пульс" value="110" min="0" class="custom-range" max="250" id="myRange2" />
+                        <!-- <div style="padding-top: 0px;padding-bottom: 15px;">
                             <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="heartbeat" id="formCheck-1"><label class="form-check-label" for="formCheck-1">&lt;60</label></div>
                             <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="heartbeat" id="formCheck-1"><label class="form-check-label" for="formCheck-1">61-70</label></div>
                             <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="heartbeat" checked="" id="formCheck-1"><label class="form-check-label" for="formCheck-1">71-90</label></div>
                             <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="heartbeat" id="formCheck-1"><label class="form-check-label" for="formCheck-1">91-110</label></div>
                             <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="heartbeat" id="formCheck-1"><label class="form-check-label" for="formCheck-1">110-120</label></div>
                             <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="heartbeat" id="formCheck-1"><label class="form-check-label" for="formCheck-1">&gt;120</label></div>
-                        </div>
+                        </div> -->
                         <h4>Повреждения:</h4><input class="form-control" type="text" name="data" id="q" style="margin-bottom: 15px;"><a style="color:#fff;" class="btn btn-primary btn-block" id="voice_input"  onclick="recognition.start()"><i class="fa fa-microphone"></i>&nbsp;Голосовой ввод информации</a></div>
                     <div
                         style="display: none;" id="result">
                         <h4>Прогноз:</h4>
-                        <h4 class="text-danger"><strong>+ (9-12 часов жизни)</strong></h4>
+                        <h4 class="text-danger"><strong>Положительный прогноз<br>(9-12 часов жизни)</strong></h4>
             </div>
             </form>
             <form style="display: none;" id="second_p">
